@@ -1,6 +1,10 @@
+<% if user_signed_in? %>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-lg" %>
 
+<% else %>
+<script type="text/javascript"> $(function ()
 
-
+{ $("#myModal").modal({show:false }); </script>
 <!--Video Section-->
 <section class="content-section video-section">
   <div class="pattern-overlay">
@@ -26,11 +30,29 @@
                   <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
                 </div>
                 <div class="modal-body">
-                  helo
+                        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                        
+                        <%= devise_error_messages! %>
+                        
+                        <div><%= f.label :email %><br />
+                        
+                        <%= f.email_field :email, :autofocus => true %></div>
+                        
+                        <div><%= f.label :password %><br />
+                        
+                        <%= f.password_field :password %></div>
+                        
+                        <div><%= f.label :password_confirmation %><br />
+                        
+                        <%= f.password_field :password_confirmation %></div>
+                        
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-danger">Save changes</button>
+
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <%= f.submit "Sign up", :class => 'btn btn-small btn-danger' %>
+                  </div>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -46,11 +68,26 @@
                   <h4 class="modal-title" id="myModalLabel">Sign In</h4>
                 </div>
                 <div class="modal-body">
-                  ...
-                </div>
+                                  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+                                    <div><%= f.label :email %><br />
+                                    
+                                    <%= f.email_field :email, :autofocus => true %></div>
+                                    
+                                    <div><%= f.label :password %><br />
+                                    
+                                    <%= f.password_field :password %></div>
+                                    
+                                    <% if devise_mapping.rememberable? -%>
+                                    
+                                    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                                    
+                                    <% end -%>
+                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-warning">Save changes</button>
+                  <%= f.submit "Sign in", :class => 'btn btn-small btn-warning' %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -68,3 +105,4 @@ $(document).ready(function () {
     $(".player").mb_YTPlayer();
 
 });</script>
+<% end %>

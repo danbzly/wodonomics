@@ -7,9 +7,14 @@
   <link href='http://fonts.googleapis.com/css?family=Buenard:700' rel='stylesheet' type='text/css'>
   <script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
   <%= csrf_meta_tags %>
+  <script type="text/javascript"> $(function ()
+
+{ $("#myModal").modal({show:false }); </script>
 </head>
 <body>
-
+<% flash.each do |name, msg| %>
+     <%= content_tag(:div, msg, class: "alert alert-info") %>
+<% end %>
 <%= yield %>
 
 </body>
