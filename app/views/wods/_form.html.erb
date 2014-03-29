@@ -1,0 +1,21 @@
+<%= form_for(@wod) do |f| %>
+  <% if @wod.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wod.errors.count, "error") %> prohibited this wod from being saved:</h2>
+
+      <ul>
+      <% @wod.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description, class: "form-control" %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit Wod", class: "btn btn-danger" %>
+  </div>
+<% end %>
