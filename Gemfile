@@ -8,8 +8,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise', '~> 3.2.4'
+gem "paperclip", "~> 4.1"
+gem 'masonry-rails', '~> 0.2.0'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

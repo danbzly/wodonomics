@@ -4,6 +4,7 @@ class WodsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @wods = Wod.all
+    @users = User.all
   end
 
   def show
@@ -54,6 +55,6 @@ class WodsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def wod_params
-      params.require(:wod).permit(:description)
+      params.require(:wod).permit(:description, :wodtime)
     end
 end
