@@ -4,6 +4,7 @@
   <strong>Description:</strong>
   <%= @wod.description %>
 </p>
-
+<% if @wod.user == current_user %>
 <%= link_to 'Edit', edit_wod_path(@wod) %> |
+<% end %>
 <%= link_to 'Back', wods_path %>

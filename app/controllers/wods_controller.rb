@@ -1,6 +1,7 @@
 class WodsController < ApplicationController
   before_action :set_wod, only: [:show, :edit, :update, :destroy]
-  
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @wods = Wod.all
   end
@@ -9,14 +10,14 @@ class WodsController < ApplicationController
   end
 
   def new
-    @wod = Wod.new
+    @wod = current_user.wods.build
   end
 
   def edit
   end
   
   def create
-    @wod = Wod.new(wod_params)
+    @wod = current_user.wods.build(wod_params)
       if @wod.save
        redirect_to @wod, notice: 'Wod was successfully created.'
       else
@@ -44,6 +45,13 @@ class WodsController < ApplicationController
       @wod = Wod.find(params[:id])
     end
 
+
+    def correct_user
+      @wod = current_user.wods.find_by(id: params[:id])
+      redirect_to wod_path, notice: "Not authorized to edit this Wod" if @wod.nil?
+    end
+    
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def wod_params
       params.require(:wod).permit(:description)

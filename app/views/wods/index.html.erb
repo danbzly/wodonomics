@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Description</th>
+      <th>ID</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,14 +15,18 @@
     <% @wods.each do |wod| %>
       <tr>
         <td><%= wod.description %></td>
+        <td><%= wod.user.email %></td>
         <td><%= link_to 'Show', wod %></td>
+        <% if wod.user == current_user %>
         <td><%= link_to 'Edit', edit_wod_path(wod) %></td>
         <td><%= link_to 'Destroy', wod, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Wod', new_wod_path %>
+<% end %>
