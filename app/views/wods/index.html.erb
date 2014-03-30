@@ -15,7 +15,7 @@
     <% @wods.each do |wod| %>
       <tr>
         <td><%= wod.description %></td>
-        <td><%= wod.user.email %></td>
+        <td><%= wod.user.try(:email) %></td>
         <td><%= link_to 'Show', wod %></td>
         <% if wod.user == current_user %>
         <td><%= link_to 'Edit', edit_wod_path(wod) %></td>
