@@ -10,7 +10,19 @@
       </ul>
     </div>
   <% end %>
-
+<!--
+  <select>
+ <option><%= @movements.first %></option>  
+ </select>
+<select name="city_id" id="city_id">
+  <option value="1">Lisbon</option>
+  <option value="2">Madrid</option>
+  ...
+  <option value="12">Berlin</option>
+  
+</select>
+-->
+<!-- <%= select_tag(:description, options_for_select([['Lisbon', 1], ['Madrid', 2]])) %> -->
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description, class: "form-control" %><br>
@@ -19,6 +31,12 @@
     <%= f.label :wodtime %><br>
     <%= f.text_field :wodtime, class: "form-control" %><br>
   </div>
+ <!--
+ <%= check_box_tag(:description) %>
+  <%= label_tag(:description, "Snatch") %>
+<%= check_box_tag(:description) %>
+  <%= label_tag(:description, "Box Jumps") %>
+-->
   <div class="actions">
     <%= f.submit "Submit Wod", class: "btn btn-danger" %>
   </div>

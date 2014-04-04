@@ -4,7 +4,7 @@ class WodsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @wods = Wod.all
-    @users = User.all
+    
   end
 
   def show
@@ -12,6 +12,7 @@ class WodsController < ApplicationController
 
   def new
     @wod = current_user.wods.build
+   
   end
 
   def edit
