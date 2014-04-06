@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406181130) do
+ActiveRecord::Schema.define(version: 20140406193419) do
 
   create_table "movements", force: true do |t|
     t.string   "box_jump"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140406181130) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "profile_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
