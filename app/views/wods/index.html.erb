@@ -12,20 +12,21 @@
     <% end %>
     
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-success"><b>Wod Name:</b> <%= wod.description %></a>
-          <a href="#" class="list-group-item list-group-item-info"><%= wod.description %></a>
+          <a href="#" class="list-group-item list-group-item-success"><b>Wod Name:</b> <%= wod.box_jump if wod.user %></a>
+          <a href="#" class="list-group-item list-group-item-info"><%= wod.user.first_name if wod.user %></a>
           <a href="#" class="list-group-item list-group-item-warning"><b>Time:</b> <%= wod.wodtime %></a>
-          <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+         
         </div>
-      
-      
+        
       <%= link_to 'Show', wod_path(wod) %>
       <% if wod.user == current_user %>
         <%= link_to 'Edit', edit_wod_path(wod) %>
         <%= link_to 'Destroy', wod, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
+        <a href="#" class="list-group-item list-group-item-info">Created by: <%= wod.user.first_name if wod.user %></a>
   </div>
     </div>
   <% end %>
+  
 </div>
 

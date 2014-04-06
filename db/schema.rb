@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330041030) do
+ActiveRecord::Schema.define(version: 20140404042246) do
+
+  create_table "movements", force: true do |t|
+    t.string   "box_jump"
+    t.string   "jump_rope"
+    t.string   "wall_ball"
+    t.string   "snatch"
+    t.datetime "created_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -27,6 +35,8 @@ ActiveRecord::Schema.define(version: 20140330041030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "firstname"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -39,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140330041030) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "wodtime"
+    t.string   "box_jump"
   end
 
   add_index "wods", ["user_id"], name: "index_wods_on_user_id"

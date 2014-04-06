@@ -2,8 +2,9 @@ class WodsController < ApplicationController
   before_action :set_wod, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  
   def index
-    @wods = Wod.all
+    @wods = Wod.all.order("created_at DESC")
     
   end
 
@@ -56,6 +57,6 @@ class WodsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def wod_params
-      params.require(:wod).permit(:description, :wodtime)
+      params.require(:wod).permit(:description, :wodtime, :box_jump, :jump_rope)
     end
 end
