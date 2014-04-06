@@ -15,8 +15,9 @@ class User < ActiveRecord::Base
   validates :avatar, presence: false
   validates :profile_name, presence: true, 
                            uniqueness: true,
-                           format:  {
-                             with: /a-ZA-Z0-9_-/,
-                           }
+            format: {
+              with: /\A[a-zA-Z0-9_\-]+\z/,
+              message: "must be formatted correctly"
+            }
   
 end
